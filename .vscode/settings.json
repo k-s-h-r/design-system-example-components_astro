@@ -1,0 +1,21 @@
+{
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "prettier.documentSelectors": ["**/*.astro"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.unicodeHighlight.invisibleCharacters": true,
+  "editor.formatOnSave": true,
+  "tailwindCSS.experimental.classRegex": [
+    "class = `([^`]*)",
+    "class: ",
+    "Style = ",
+    "= `([^`]*)",
+    ": `([^`]*)",
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ]
+}

@@ -1,0 +1,42 @@
+---
+import Button from '@/components/Button.astro'
+import Layout from '@/layouts/Layout.astro'
+import Container from '@/components/Container.astro'
+import Stack from '@/components/Stack.astro'
+import Text from '@/components/Text.astro'
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <div>
+      <header>
+        <div class="">
+          <Container>
+            <div class="grid min-h-[15rem] items-center py-6">
+              <Stack>
+                <h1 class="text-[3rem] font-bold">コンポーネント</h1>
+              </Stack>
+            </div>
+          </Container>
+        </div>
+      </header>
+
+      <!-- <GlobalNav current="/components" /> -->
+
+      <!-- <Nav contentNav={contentNav} />-->
+
+      <main class="mt-10 pb-14">
+        <Container>
+          <Stack space="2xl">
+            <Text>
+              コンポーネントとは、直訳すると「部品」という意味です。インターフェース（利用者が実際に操作する画面）を構成する主要な部品の形やルールを、汎用性の高い形であらかじめ定めることで、設計したい画面の目的や機能に応じて効率よく組み立てたり、一貫したデザインの実装を可能とすることを目的としています。
+            </Text>
+          </Stack>
+          <Stack space="2xl" class="mt-2xl" />
+        </Container>
+      </main>
+    </div>
+  </main>
+</Layout>
+
+<style></style>
