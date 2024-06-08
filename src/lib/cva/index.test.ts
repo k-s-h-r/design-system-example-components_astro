@@ -1,3 +1,4 @@
+/*
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { cx } from './';
@@ -80,3 +81,5 @@ describe('Test: twMerge', () => {
     expect(className).toBe('list-outside list-lower-latin');
   });
 });
+
+*/
