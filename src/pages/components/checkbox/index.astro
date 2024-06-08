@@ -1,0 +1,41 @@
+---
+import Checkbox from '@/components/Checkbox.astro';
+import Layout from '@/layouts/Layout.astro';
+import Container from '@/components/Container.astro';
+import Base from '@/layouts/Base.astro';
+---
+
+<Layout title="Welcome to Astro.">
+  <Base>
+    <Container>
+      <div class="grid gap-4 justify-items-start">
+        <h2 class="text-std-18B-6">default</h2>
+        <Checkbox />
+        <Checkbox>Label</Checkbox>
+        <h2 class="text-std-18B-6">checked</h2>
+        <Checkbox checked>Label</Checkbox>
+        <h2 class="text-std-18B-6">size</h2>
+        <Checkbox size="sm">Label</Checkbox>
+        <Checkbox size="md">Label</Checkbox>
+        <Checkbox size="lg">Label</Checkbox>
+        <h2 class="text-std-18B-6">disabled</h2>
+        <Checkbox disabled>disabled</Checkbox>
+        <Checkbox disabled checked>disabled</Checkbox>
+        <h2 class="text-std-18B-6">invalid</h2>
+        <Checkbox invalid>invalid</Checkbox>
+        <Checkbox invalid checked>invalid</Checkbox>
+        <h2 class="text-std-18B-6">indeterminate</h2>
+        <Checkbox data-indeterminate>indeterminate</Checkbox>
+        <Checkbox data-indeterminate disabled>indeterminate</Checkbox>
+        <Checkbox data-indeterminate invalid>indeterminate</Checkbox>
+      </div>
+    </Container>
+  </Base>
+</Layout>
+
+<script>
+  const el = document.querySelectorAll('[data-indeterminate]') as NodeListOf<HTMLInputElement>;
+  el.forEach((el) => {
+    el.indeterminate = true;
+  });
+</script>

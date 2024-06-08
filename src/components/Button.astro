@@ -1,28 +1,32 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
-import { cva, cx, compose, focusRing } from '@/lib/cva'
-import type { VariantProps } from 'cva'
+import type { HTMLAttributes } from 'astro/types';
+import { cva, cx, compose, focusRing } from '@/lib/cva';
+import type { VariantProps } from 'cva';
 
 export const _buttonVariants = cva({
-  base: ['border border-transparent underline-offset-2', 'disabled:no-underline disabled:pointer-events-none'],
+  base: [
+    'border border-transparent underline-offset-2',
+    // disabled
+    'disabled:no-underline disabled:pointer-events-none',
+  ],
   variants: {
     variant: {
       primary: [
         'bg-blue-900 text-white',
         'hover:bg-blue-1000 hover:underline',
-        'pressed:bg-blue-1100 pressed:underline',
+        'active:bg-blue-1100 active:underline',
         'disabled:bg-black/30',
       ],
       secondary: [
-        '!border-blue-900 bg-white text-blue-900',
-        'hover:!border-blue-1000 hover:bg-blue-200 hover:text-blue-1000 hover:underline',
-        'pressed:!border-blue-1100 pressed:bg-blue-300 pressed:text-blue-1200 pressed:underline',
-        'disabled:!border-solid-grey-400 disabled:bg-white disabled:text-solid-grey-400',
+        'border-blue-900 bg-white text-blue-900',
+        'hover:border-blue-1000 hover:bg-blue-200 hover:text-blue-1000 hover:underline',
+        'active:border-blue-1100 active:bg-blue-300 active:text-blue-1200 active:underline',
+        'disabled:border-solid-grey-400 disabled:bg-white disabled:text-solid-grey-400',
       ],
       tertiary: [
         'bg-transparent text-blue-900 underline',
         'hover:bg-blue-200 hover:text-blue-1000',
-        'pressed:bg-blue-300 pressed:text-blue-1200',
+        'active:bg-blue-300 active:text-blue-1200',
         'disabled:bg-transparent disabled:text-solid-grey-400',
       ],
     },
@@ -37,9 +41,9 @@ export const _buttonVariants = cva({
     variant: 'primary',
     size: 'md',
   },
-})
+});
 
-const buttonVariants = compose(focusRing, _buttonVariants)
+const buttonVariants = compose(focusRing, _buttonVariants);
 
 export interface Props extends HTMLAttributes<'button'>, VariantProps<typeof buttonVariants> {}
 
@@ -47,7 +51,7 @@ export interface Props extends HTMLAttributes<'button'>, VariantProps<typeof but
  * For Astro components, we recommend setting your defaultVariants within
  * Astro.props (which are `undefined` by default)
  */
-const { variant = 'primary', size = 'md', class: className } = Astro.props
+const { variant = 'primary', size = 'md', class: className } = Astro.props;
 ---
 
 <button class={cx(buttonVariants({ variant, size, class: className }))}>

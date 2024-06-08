@@ -1,15 +1,15 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
-import { cva, cx, compose } from '@/lib/cva'
-import type { VariantProps } from 'cva'
+import type { HTMLAttributes } from 'astro/types';
+import { cva, cx, compose } from '@/lib/cva';
+import type { VariantProps } from 'cva';
 
 export const _textVariants = cva({
   base: [],
   variants: {},
   defaultVariants: {},
-})
+});
 
-const textVariants = compose(_textVariants)
+const textVariants = compose(_textVariants);
 
 export interface Props extends HTMLAttributes<'p'>, VariantProps<typeof textVariants> {}
 
@@ -17,7 +17,7 @@ export interface Props extends HTMLAttributes<'p'>, VariantProps<typeof textVari
  * For Astro components, we recommend setting your defaultVariants within
  * Astro.props (which are `undefined` by default)
  */
-const { class: className } = Astro.props
+const { class: className } = Astro.props;
 ---
 
 <p class={cx(textVariants({ class: className }))}>

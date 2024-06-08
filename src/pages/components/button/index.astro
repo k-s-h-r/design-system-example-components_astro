@@ -1,22 +1,28 @@
 ---
-import Button from '@/components/Button.astro'
-import Layout from '@/layouts/Layout.astro'
+import Button from '@/components/Button.astro';
+import Container from '@/components/Container.astro';
+import Layout from '@/layouts/Layout.astro';
+import Base from '@/layouts/Base.astro';
 ---
 
 <Layout title="Welcome to Astro.">
-  <div class="grid gap-4 justify-items-start">
-    <Button>ボタン</Button>
-    <Button variant="primary" size="lg">ボタン</Button>
-    <Button variant="primary" size="md">ボタン</Button>
-    <Button variant="primary" size="sm">ボタン</Button>
-    <Button variant="primary" size="xs">ボタン</Button>
-    <Button variant="secondary" size="lg">ボタン</Button>
-    <Button variant="secondary" size="md">ボタン</Button>
-    <Button variant="secondary" size="sm">ボタン</Button>
-    <Button variant="secondary" size="xs">ボタン</Button>
-    <Button variant="tertiary" size="lg">ボタン</Button>
-    <Button variant="tertiary" size="md">ボタン</Button>
-    <Button variant="tertiary" size="sm">ボタン</Button>
-    <Button variant="tertiary" size="xs">ボタン</Button>
-  </div>
+  <Base>
+    <Container>
+      <div class="grid gap-4 justify-items-start">
+        <Button>ボタン</Button>
+        <Button variant="primary" size="lg">ボタン</Button>
+        <Button variant="primary" size="md">ボタン</Button>
+        <Button variant="primary" size="sm">ボタン</Button>
+        <Button variant="primary" size="xs">ボタン</Button>
+        <Button variant="secondary" size="lg">ボタン</Button>
+        <Button variant="secondary" size="md">ボタン</Button>
+        <Button variant="secondary" size="sm">ボタン</Button>
+        <Button variant="secondary" size="xs">ボタン</Button>
+        <Button variant="tertiary" size="lg">ボタン</Button>
+        <Button variant="tertiary" size="md">ボタン</Button>
+        <Button variant="tertiary" size="sm">ボタン</Button>
+        <Button variant="tertiary" size="xs">ボタン</Button>
+      </div>
+    </Container>
+  </Base>
 </Layout>

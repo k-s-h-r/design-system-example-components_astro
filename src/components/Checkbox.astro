@@ -1,0 +1,117 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { cva, cx, compose, peerFocusRing } from '@/lib/cva';
+import type { VariantProps } from 'cva';
+
+const checkboxVariants = cva({
+  base: 'flex gap-2 items-center group transition',
+  variants: {
+    size: {
+      sm: '[--size:17px] text-std-16N-7',
+      md: '[--size:17px] text-std-16N-7',
+      lg: '[--size:23px] text-std-17N-7',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});
+
+//export type Props = RequireSome<HTMLAttributes<"input">, "id" | "name"> & {
+//label: string;
+//};
+
+const _boxVariants = cva({
+  base: [
+    'size-[--size] flex-shrink-0 rounded-sm flex items-center justify-center border-2 transition pointer-events-none',
+    // unchecked
+    '[--color:theme(colors.solid-grey.900)]',
+    'bg-white',
+    'border-[--color]',
+    '[--icon-checked:none]',
+    '[--icon-indeterminate:none]',
+    // active
+    'peer-active:[--color:theme(colors.black)]',
+    // checked
+    'peer-checked:[--color:theme(colors.blue.900)]',
+    'peer-checked:peer-active:[--color:theme(colors.blue.1000)]',
+    'peer-checked:bg-[--color]',
+    'peer-checked:border-[--color]',
+    'peer-checked:[--icon-checked:block]',
+    // disabled
+    'peer-disabled:![--color:theme(colors.solid-grey.200)]',
+    // invalid
+    // 'peer-invalid:[--color:theme(colors.error-1)]',
+    'group-data-[invalid="true"]:![--color:theme(colors.error-1)]',
+    // indeterminate
+    'peer-indeterminate:[--color:theme(colors.blue.900)]',
+    'peer-indeterminate:peer-active:[--color:theme(colors.blue.1000)]',
+    'peer-indeterminate:bg-[--color]',
+    'peer-indeterminate:border-[--color]',
+    'peer-indeterminate:[--icon-indeterminate:block]',
+  ],
+  variants: {},
+});
+const boxVariants = compose(peerFocusRing, _boxVariants);
+
+const inputVariants = cva({
+  base: ['peer', 'size-[--size] absolute appearance-none opacity-0'],
+});
+
+export interface Props extends Omit<HTMLAttributes<'input'>, 'size'>, VariantProps<typeof checkboxVariants> {
+  invalid?: boolean;
+  indeterminate?: 'true';
+}
+
+/**
+ * For Astro components, we recommend setting your defaultVariants within
+ * Astro.props (which are `undefined` by default)
+ */
+const { id, name, class: className, size, invalid, ...attrs } = Astro.props;
+const hasDefaultSlot = Astro.slots.has('default');
+const dataInvalid = invalid ? 'true' : undefined;
+const Wrapper = hasDefaultSlot ? 'label' : 'span';
+---
+
+<Wrapper class={cx(checkboxVariants({ size, class: [className] }))} data-invalid={dataInvalid}>
+  <input type="checkbox" id={id} name={name} class={cx(inputVariants({}))} {...attrs} />
+  <span class={cx(boxVariants({}))}>
+    <!--{isIndeterminate ? (
+      <>TODO</>
+    )-->
+    <svg
+      aria-hidden={true}
+      class={cx(['[display:--icon-indeterminate] size-full text-white fill-current'])}
+      width="23"
+      height="23"
+      viewBox="0 0 23 23"
+    >
+      <path d="M5.07324 12.5147H17.9262V10.4854H5.07324V12.5147Z"></path>
+    </svg>
+    <svg
+      aria-hidden={true}
+      class={cx(['[display:--icon-checked] size-full text-white fill-current'])}
+      width="23"
+      height="23"
+      viewBox="0 0 23 23"
+    >
+      <path d="M9.4666 16.4668L18.4333 7.5001L17.0333 6.1001L9.4666 13.6668L5.6666 9.86676L4.2666 11.2668L9.4666 16.4668Z"></path>
+    </svg>
+  </span>
+  {
+    hasDefaultSlot && (
+      <span
+        class={cx([
+          '[--color:text-solid-grey-800] text-[--color]',
+          // disabled
+          'peer-disabled:[--color:text-solid-grey-600]',
+          // invalid
+          // 'peer-invalid:[--color:theme(colors.error-1)]',
+          'group-data-[invalid="true"]:[--color:theme(colors.error-1)]',
+        ])}
+      >
+        <slot />
+      </span>
+    )
+  }
+</Wrapper>

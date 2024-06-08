@@ -1,5 +1,5 @@
-import { cva as _cva, defineConfig } from 'cva'
-import { extendTailwindMerge } from 'tailwind-merge'
+import { cva as _cva, defineConfig } from 'cva';
+import { extendTailwindMerge } from 'tailwind-merge';
 
 export const twMerge = extendTailwindMerge({
   extend: {
@@ -323,7 +323,7 @@ export const twMerge = extendTailwindMerge({
       ],
     },
   },
-})
+});
 // forced-colors:outline-[Highlight]
 export const focusRing = _cva({
   base: [
@@ -332,10 +332,18 @@ export const focusRing = _cva({
     // 'dark:outline-focus-yellow'
   ],
   variants: {},
-})
+});
+export const peerFocusRing = _cva({
+  base: [
+    'outline outline-offset-2 outline-focus-yellow outline-0',
+    'peer-focus-visible:outline-2',
+    // 'dark:outline-focus-yellow'
+  ],
+  variants: {},
+});
 
 export const { cva, cx, compose } = defineConfig({
   hooks: {
     onComplete: (className) => twMerge(className),
   },
-})
+});
