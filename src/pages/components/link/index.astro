@@ -1,0 +1,17 @@
+---
+import Link from '@/components/Link.astro';
+import Container from '@/components/Container.astro';
+import Layout from '@/layouts/Layout.astro';
+import Base from '@/layouts/Base.astro';
+---
+
+<Layout title="Welcome to Astro.">
+  <Base>
+    <Container>
+      <div class="grid gap-4 justify-items-start">
+        <Link href="#">リンク</Link>
+        <Link>リンク hrefなし</Link>
+      </div>
+    </Container>
+  </Base>
+</Layout>

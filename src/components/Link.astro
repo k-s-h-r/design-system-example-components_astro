@@ -1,0 +1,34 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { cva, cx, compose, focusRing } from '@/lib/cva';
+import type { VariantProps } from 'cva';
+
+const _linkVariants = cva({
+  base: ['rounded', 'disabled:no-underline disabled:pointer-events-none disabled:text-solid-grey-400'],
+  variants: {
+    hasHref: {
+      true: [
+        'text-blue-1000 underline underline-offset-2 hover:decoration-[3px]',
+        'visited:text-magenta-900',
+        'active:text-orange-700',
+      ],
+    },
+  },
+  defaultVariants: {},
+});
+
+const linkVariants = compose(focusRing, _linkVariants);
+
+export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof linkVariants> {}
+
+/**
+ * For Astro components, we recommend setting your defaultVariants within
+ * Astro.props (which are `undefined` by default)
+ */
+const { href, class: className } = Astro.props;
+const hasHref = !!href;
+---
+
+<a href={href} class={cx(linkVariants({ hasHref, class: className }))}>
+  <slot />
+</a>

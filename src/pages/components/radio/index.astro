@@ -1,0 +1,30 @@
+---
+import Radio from '@/components/Radio.astro';
+import Layout from '@/layouts/Layout.astro';
+import Container from '@/components/Container.astro';
+import Base from '@/layouts/Base.astro';
+---
+
+<Layout title="Welcome to Astro.">
+  <Base>
+    <Container>
+      <div class="grid gap-4 justify-items-start">
+        <h2 class="text-std-18B-6">default</h2>
+        <Radio name="sample1" />
+        <Radio name="sample1">Label</Radio>
+        <h2 class="text-std-18B-6">checked</h2>
+        <Radio checked>Label</Radio>
+        <h2 class="text-std-18B-6">size</h2>
+        <Radio size="sm" name="sample2">Label</Radio>
+        <Radio size="md" name="sample2">Label</Radio>
+        <Radio size="lg" name="sample2">Label</Radio>
+        <h2 class="text-std-18B-6">disabled</h2>
+        <Radio disabled>disabled</Radio>
+        <Radio disabled checked>disabled</Radio>
+        <h2 class="text-std-18B-6">invalid</h2>
+        <Radio invalid>invalid</Radio>
+        <Radio invalid checked>invalid</Radio>
+      </div>
+    </Container>
+  </Base>
+</Layout>

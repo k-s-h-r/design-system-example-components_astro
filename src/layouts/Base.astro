@@ -1,14 +1,11 @@
+---
+import Link from '@/components/Link.astro';
+import Menu from '@/pages/_components/Menu.astro';
+---
+
 <div class="grid grid-cols-[auto_1fr]">
-  <aside class="w-48 py-8 px-4">
-    <h2 class="text-std-24B-5">Components</h2>
-    <ul>
-      <li>
-        <a href="/components/button">Button</a>
-      </li>
-      <li>
-        <a href="/components/checkbox">Checkbox</a>
-      </li>
-    </ul>
+  <aside class="w-64 py-8 px-4 border-r min-h-screen">
+    <Menu />
   </aside>
   <div class="pt-8">
     <slot />
